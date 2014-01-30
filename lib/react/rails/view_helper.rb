@@ -35,6 +35,10 @@ module React
         result << react_javascript_tag(name, html_options[:id], args)
       end
 
+      def react_component_ujs(name, args = {}, options = {})
+        content_tag(:div, nil, {:data => {:react => name}.merge(args)})
+      end
+
       private
       # Returns +[html_tag, html_options]+.
       def react_parse_options(options)
