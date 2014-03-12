@@ -36,6 +36,8 @@ module React
       # Support both 0.8 and 0.9 API (with and without callback)
       jscode = <<-JS
         function() {
+          var console = {};
+          console.log = console.warn = function(){};
           var cb_html = null;
           var html = React.renderComponentToString(#{component}(#{args.to_json}), function(s){cb_html = s});
           return cb_html || html;
